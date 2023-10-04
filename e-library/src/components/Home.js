@@ -15,7 +15,7 @@ function Home() {
     </div>
     <div className='Home'>
         <h2 className='welcome'>Discover personalized ebook deals.
-        <p>Tell BookBub what you like to read, and get handpicked deals that match your reading taste.</p>
+        <p>Tell BookHub what you like to read, and get handpicked deals that match your reading taste.</p>
         </h2>
         <img className='img2' src='https://shorturl.at/bdlyT' alt='altc'/>
     </div>
