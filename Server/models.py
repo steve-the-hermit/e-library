@@ -9,29 +9,31 @@ author_genre_association = db.Table('author_genre_association',
 )
 
 class Author(db.Model):
-    tablename = 'author'
+    __tablename__ = 'author'
 
-author_id = db.Column(db.Integer, primary_key=True)
-author_name = db.Column(db.String(250), nullable=False)
+    author_id = db.Column(db.Integer, primary_key=True)
+    author_name = db.Column(db.String(250), nullable=False)
 
-books = db.relationship('Book', back_populates='author')
+    books = db.relationship('Book', back_populates='author')
+
 class Book(db.Model):
-    tablename = 'book'
+    __tablename__ = 'book'
 
-book_id = db.Column(db.Integer, primary_key=True)
-book_name = db.Column(db.String(250), nullable=False)
+    book_id = db.Column(db.Integer, primary_key=True)
+    book_name = db.Column(db.String(250), nullable=False)
+    
+    author_id = db.Column(db.Integer, db.ForeignKey('author.author_id'))
+    author = db.relationship('Author', back_populates='books', uselist=False)  
 
-author_id = db.Column(db.Integer, db.ForeignKey('author.author_id'))
-author = db.relationship('Author', back_populates='books', uselist=False)  
+    author_name = db.Column(db.String(250))
+    author_author_id = db.Column(db.Integer)
+    
+    genres = db.relationship('Genre', secondary=author_genre_association, back_populates='books')
 
-author_name = db.Column(db.String(250))
-author_author_id = db.Column(db.Integer)
-
-genres = db.relationship('Genre', secondary=author_genre_association, back_populates='books')
 class Genre(db.Model):
-    tablename = 'genre'
+    __tablename__ = 'genre'
 
-genre_id = db.Column(db.Integer, primary_key=True)
-genre_name = db.Column(db.String(250), nullable=False)
+    genre_id = db.Column(db.Integer, primary_key=True)
+    genre_name = db.Column(db.String(250), nullable=False)
 
-authors = db.relationship('Author', secondary=author_genre_association, back_populates='genres')
+    authors = db.relationship('Author', secondary=author_genre_association, back_populates='genres')
