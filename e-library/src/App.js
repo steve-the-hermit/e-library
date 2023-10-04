@@ -13,14 +13,14 @@ function App() {
           <Link to="/" className='title'>BookHub</Link>
         <nav className='navbar'>
           <ul>
-            <li className='active'>
-              <Link to="/author">Author</Link>
+            <li>
+              <Link activeClassName="active-link" to="/author">Author</Link>
             </li>
-            <li className='active'>
-              <Link to="/book">Book</Link>
+            <li>
+              <Link activeClassName="active-link" to="/book">Book</Link>
             </li>
-            <li className='active'>
-              <Link to="/genre">Genre</Link>
+            <li>
+              <Link activeClassName="active-link" to="/genre">Genre</Link>
             </li>
           </ul>
         </nav>

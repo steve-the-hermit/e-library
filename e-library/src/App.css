@@ -45,7 +45,7 @@
 .title {
   font-family: 'Times New Roman', Times, serif;
   font-size: 40px;
-  color: orangered;
+  color: rgb(102, 30, 30);
   display: flex;
   text-align: left;
   margin: 20px; 
@@ -57,7 +57,7 @@
   font-family: Didot, serif;
   text-align: left; 
   margin-right: 20px;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 .img {
@@ -69,7 +69,7 @@
   top: 10px;
   right: 0;
   padding: 20px;
-  background-color: orangered; 
+  background-color: rgb(102, 30, 30); 
 }
 
 .navbar ul {
@@ -95,7 +95,7 @@
 
 .navbar .active {
   font-weight: bold;
-  color: #ff6600; 
+  color: rgb(102, 30, 30);
 }
 
 .img2{
@@ -111,10 +111,11 @@ p{
 }
 
 .join{
-  font-size: 55px;
+  font-size: 45px;
   font-family: Trebuchet MS, sans-serif;
   display: flex;
-  margin-left: 20%;
+  margin-left: 30%;
+  color: rgb(102, 30, 30);
 }
 
 .img3{
@@ -133,4 +134,8 @@ p{
 .textname{
   margin-right: 110px;
   font-family: Luminari, fantasy;
+  color: rgb(102, 30, 30);
+  font-size: 20px;
 }
+
+
