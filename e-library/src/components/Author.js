@@ -18,26 +18,34 @@ function Author() {
     'https://cfda.imgix.net/2022/12/Adonis-unnamed-8.jpg',
   ];
 
+  const authors = [
+    { name: 'Author 1', description: 'Author 1 description...' },
+    { name: 'Author 2', description: 'Author 2 description...' },
+    // Add more authors as needed
+  ];
+
   return (
     <div>
-      <p>Trending Authors</p>
+      <p>Popular Authors</p>
       {images.map((imageUrl, index) => (
         <div className="card" key={index}>
-          {/* <span>Authorname</span> */}
           <div className="img">
-            <img  className="imgtag" src={imageUrl} alt="" />
-            <button
-              style={{
-                backgroundColor: cardState[index] ? 'rgb(102, 30, 30)' : '#000',
-                color: cardState[index] ? '#ffffff' : '#ffffff',
-              }}
-              onClick={() => toggleCardState(index)}
-            >
-              {cardState[index] ? 'Unfollow' : 'Follow'}
-            </button>
+            <img className="imgtag" src={imageUrl} alt="" />
+            <div>
+              <span className='followers'>Readers: {followCounts[index]}</span>
+            </div>
           </div>
         </div>
       ))}
+      <div className='Authors'>
+        <p>Explore</p>
+        {authors.map((author, index) => (
+          <div className="author-info" key={index}>
+            <h3>{author.name}</h3>
+            <p>{author.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
