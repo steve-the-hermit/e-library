@@ -7,6 +7,7 @@ import Author from './components/Author';
 import Book from './components/Book'; 
 import Genre from './components/Genre'; 
 import Home from './components/Home';
+import Detail from './components/Details';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/book" element={<Book />} />
           <Route path="/genre" element={<Genre />} />
           <Route path="/author" element={<Author />} />
+          <Route path="/author/:authorId" element={<Detail />} />
         </Routes>
       </div>
     </Router>
