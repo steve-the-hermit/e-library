@@ -23,8 +23,18 @@ function Author() {
     'https://shorturl.at/AIR58',
     'https://cfda.imgix.net/2022/12/Adonis-unnamed-8.jpg',
   ];
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleResetClick = () => {
+    setSearchQuery('');
+  };
 
   return (
+    
     <div>
       <p>Popular Authors</p>
       {cardImages.map((imageUrl, index) => (
@@ -38,7 +48,34 @@ function Author() {
         </div>
       ))}
       <div className='Authors'>
+      <div className="form">
+        <input
+          type="text"
+          className="input"
+          placeholder="Search Author"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        {searchQuery && (
+          <button className="reset" onClick={handleResetClick}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
         <p>Explore</p>
+        {/* map author */}
       </div>
     </div>
   );
