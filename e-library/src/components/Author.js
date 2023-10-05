@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Author() {
   const [followCounts, setFollowCounts] = useState(Array(6).fill(0));
@@ -39,12 +40,14 @@ function Author() {
       <p>Popular Authors</p>
       {cardImages.map((imageUrl, index) => (
         <div className="card" key={index}>
-          <div className="img">
-            <img className="imgtag" src={imageUrl} alt="" />
-            <div>
-              <span className='followers'>Readers: {followCounts[index]}</span>
+          <Link className='my-link' to={`/author/${index}`}>
+            <div className="img">
+              <img className="imgtag" src={imageUrl} alt="" />
+              <div>
+                <span className='followers'>Readers: {followCounts[index]}</span>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
       <div className='Authors'>
