@@ -39,17 +39,20 @@ function Author() {
     <div>
       <p>Popular Authors</p>
       {cardImages.map((imageUrl, index) => (
-        <div className="card" key={index}>
-          <Link className='my-link' to={`/author/${index}`}>
-            <div className="img">
-              <img className="imgtag" src={imageUrl} alt="" />
-              <div>
-                <span className='followers'>Readers: {followCounts[index]}</span>
-              </div>
-            </div>
-          </Link>
+  <div className="card" key={index}>
+    <Link className='my-link' to={`/author/${index}`}>
+      <div className="img">
+        <div className="imgtag-container">
+          <img className="imgtag" src={imageUrl} alt="" />
+          <div className="view-text">ViewProfile</div>
         </div>
-      ))}
+        <div>
+          <span className='followers'>Readers: {followCounts[index]}</span>
+        </div>
+      </div>
+    </Link>
+  </div>
+))}
       <div className='Authors'>
       <div className="form">
         <input
