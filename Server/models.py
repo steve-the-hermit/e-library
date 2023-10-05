@@ -1,39 +1,36 @@
-from flask import Flask 
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-author_genre_association = db.Table('author_genre_association',
-    db.Column('author_id', db.Integer, db.ForeignKey('author.author_id')),
-    db.Column('genre_id', db.Integer, db.ForeignKey('genre.genre_id'))
-)
-
 class Author(db.Model):
-    __tablename__ = 'author'
-
     author_id = db.Column(db.Integer, primary_key=True)
-    author_name = db.Column(db.String(250), nullable=False)
+    author_name = db.Column(db.String(255), nullable=False)
+    author_birth_date = db.Column(db.Date)
 
-    books = db.relationship('Book', back_populates='author')
+    # Relationship to books
+    books = db.relationship('Book', backref='author', lazy=True)
 
-class Book(db.Model):
-    __tablename__ = 'book'
+    def __str__(self):
+        return f"Author: {self.author_name}, Born: {self.author_birth_date}"
 
-    book_id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.String(250), nullable=False)
-    
-    author_id = db.Column(db.Integer, db.ForeignKey('author.author_id'))
-    author = db.relationship('Author', back_populates='books', uselist=False)  
-
-    author_name = db.Column(db.String(250))
-    author_author_id = db.Column(db.Integer)
-    
-    genres = db.relationship('Genre', secondary=author_genre_association, back_populates='books')
-
+# Define Genre model
 class Genre(db.Model):
-    __tablename__ = 'genre'
-
     genre_id = db.Column(db.Integer, primary_key=True)
-    genre_name = db.Column(db.String(250), nullable=False)
+    genre_name = db.Column(db.String(255), nullable=False)
 
-    authors = db.relationship('Author', secondary=author_genre_association, back_populates='genres')
+    # Relationship to books
+    books = db.relationship('Book', backref='genre', lazy=True)
+
+    def __str__(self):
+        return f"Genre: {self.genre_name}"
+
+# Define Book model
+class Book(db.Model):
+    book_id = db.Column(db.Integer, primary_key=True)
+    book_title = db.Column(db.String(255), nullable=False)
+    book_publication_year = db.Column(db.Integer)
+    book_author_id = db.Column(db.Integer, db.ForeignKey('author.author_id'), nullable=False)
+    book_genre_id = db.Column(db.Integer, db.ForeignKey('genre.genre_id'), nullable=False)
+
+    def __str__(self):
+        return f"Book: {self.book_title}, Author: {self.author.author_name}, Genre: {self.genre.genre_name}, Year: {self.book_publication_year}"
