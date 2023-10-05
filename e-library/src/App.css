@@ -232,27 +232,24 @@ p{
   color: #564f4f;
 }
 
-#stats svg {
-  fill: #bebebe;
-  transform: scale(1.2);
-}
 
 .card {
   width: 170px;
-  height: 200px;
+  height: 250px;
   border-radius: 50%;
   margin-right: 40px;
   margin-left: 18px;
   gap: 30px;
   display: inline-block;
+  position: relative;
 }
 
 .card .img {
   margin: auto;
   margin-top: 25px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .card .imgtag {
@@ -268,22 +265,10 @@ p{
   transform: scale(1.2);
 }
 
-.card :hover span {
-  opacity: 1;
-}
 
-.card button {
-  padding: 8px 25px;
-  display: block;
-  margin: auto;
-  border-radius: 8px;
-  border: none;
-  margin-top: 30px;
-  background: #ffffff;
-  color: #000;
-}
-
-.card button:hover {
-  background: #6d6c76;
+.followers{
+  font-size: 15px;
+  font-family: Apple Chancery, cursive;
+  color: rgb(102, 30, 30);
 }
 
