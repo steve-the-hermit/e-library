@@ -1,10 +1,46 @@
 // edits
 
-import React from 'react';
+import React,{useState} from 'react';
+
 
 function Book() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleResetClick = () => {
+    setSearchQuery('');
+  };
   return (
     <div className="App">
+      <div className="form">
+        <input
+          type="text"
+          className="input"
+          placeholder="Search Books"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        {searchQuery && (
+          <button className="reset" onClick={handleResetClick}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
       <div className="container">
         <div className="palette">
           <div className="color" style={{ background: 'url(https://shorturl.at/cCEJ8) center/cover' }}>
@@ -34,15 +70,9 @@ function Book() {
         </div>
       </div>
       <div className='books'>
-  <p>Our Collection</p>
-  {books.map((book, index) => (
-    <div className="book-info" key={index}>
-      <h3>{book.title}</h3>
-      <p>Book description, author information, or other relevant details go here.</p>
-    </div>
-  ))}
-</div>
-
+        <p>Our Collection</p>
+          {/* map the books */}
+        </div>
     </div>
   );
 }
