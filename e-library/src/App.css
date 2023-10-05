@@ -233,6 +233,8 @@ p{
 }
 
 
+/* Author.css */
+
 .card {
   width: 170px;
   height: 250px;
@@ -265,8 +267,39 @@ p{
   transform: scale(1.2);
 }
 
+.card .imgtag-container {
+  width: 170px;
+  height: 170px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
 
-.followers{
+.card .imgtag-container:hover .imgtag {
+  transform: scale(1.2);
+}
+
+.view-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none;
+  z-index: 1;
+}
+
+.card .imgtag-container:hover .view-text {
+  display: block;
+}
+
+.followers {
   font-size: 15px;
   font-family: Apple Chancery, cursive;
   color: rgb(102, 30, 30);
@@ -300,7 +333,7 @@ p{
   margin-bottom: 20px;
   margin-left: 500px;
 }
-/* styling of Input */
+
 .input {
   font-size: 0.9rem;
   background-color: transparent;
@@ -310,7 +343,7 @@ p{
   padding-block: 0.7em;
   border: none;
 }
-/* styling of animated border */
+
 .form:before {
   content: "";
   position: absolute;
@@ -363,3 +396,4 @@ input:not(:placeholder-shown) ~ .reset {
   font-size: 25px;
   font-family: Gill Sans, sans-serif;
 }
+

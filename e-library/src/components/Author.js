@@ -34,28 +34,55 @@ function Author() {
     setSearchQuery('');
   };
 
-
   return (
     
     <div>
       <p>Popular Authors</p>
-      {images.map((imageUrl, index) => (
-        <div className="card" key={index}>
-          {/* <span>Authorname</span> */}
-          <div className="img">
-            <img  className="imgtag" src={imageUrl} alt="" />
-            <button
-              style={{
-                backgroundColor: cardState[index] ? 'rgb(102, 30, 30)' : '#000',
-                color: cardState[index] ? '#ffffff' : '#ffffff',
-              }}
-              onClick={() => toggleCardState(index)}
-            >
-              {cardState[index] ? 'Unfollow' : 'Follow'}
-            </button>
-          </div>
+      {cardImages.map((imageUrl, index) => (
+  <div className="card" key={index}>
+    <Link className='my-link' to={`/author/${index}`}>
+      <div className="img">
+        <div className="imgtag-container">
+          <img className="imgtag" src={imageUrl} alt="" />
+          <div className="view-text">ViewProfile</div>
         </div>
-      ))}
+        <div>
+          <span className='followers'>Readers: {followCounts[index]}</span>
+        </div>
+      </div>
+    </Link>
+  </div>
+))}
+      <div className='Authors'>
+      <div className="form">
+        <input
+          type="text"
+          className="input"
+          placeholder="Search Author"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        {searchQuery && (
+          <button className="reset" onClick={handleResetClick}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
+        <p>Explore</p>
+        {/* map author */}
+      </div>
     </div>
   );
 }
