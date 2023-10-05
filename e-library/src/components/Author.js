@@ -34,11 +34,6 @@ function Author() {
     setSearchQuery('');
   };
 
-  const authors = [
-    { name: 'Author 1', description: 'Author 1 description...' },
-    { name: 'Author 2', description: 'Author 2 description...' },
-    // Add more authors as needed
-  ];
 
   return (
     
