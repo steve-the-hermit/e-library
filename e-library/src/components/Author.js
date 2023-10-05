@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Author() {
-  const [cardState, setCardState] = useState(Array(6).fill(false));
+  const [followCounts, setFollowCounts] = useState(Array(6).fill(0));
 
-  const toggleCardState = (index) => {
-    const updatedCardState = [...cardState];
-    updatedCardState[index] = !updatedCardState[index];
-    setCardState(updatedCardState);
-  };
+  useEffect(() => {
+    setFollowCounts([13962848, 2305940, 11594036, 4676549, 5290112, 6004934]); 
 
-  const images = [
+    const intervalId = setInterval(() => {
+      setFollowCounts((prevCounts) =>
+        prevCounts.map((count) => count + 3)
+      );
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const cardImages = [
     'https://t.ly/AGkST',
     'https://shorturl.at/no168',
     'https://shorturl.at/cfQ69',
@@ -20,24 +26,20 @@ function Author() {
 
   return (
     <div>
-      <p>Trending Authors</p>
-      {images.map((imageUrl, index) => (
+      <p>Popular Authors</p>
+      {cardImages.map((imageUrl, index) => (
         <div className="card" key={index}>
-          {/* <span>Authorname</span> */}
           <div className="img">
-            <img  className="imgtag" src={imageUrl} alt="" />
-            <button
-              style={{
-                backgroundColor: cardState[index] ? 'rgb(102, 30, 30)' : '#000',
-                color: cardState[index] ? '#ffffff' : '#ffffff',
-              }}
-              onClick={() => toggleCardState(index)}
-            >
-              {cardState[index] ? 'Unfollow' : 'Follow'}
-            </button>
+            <img className="imgtag" src={imageUrl} alt="" />
+            <div>
+              <span className='followers'>Readers: {followCounts[index]}</span>
+            </div>
           </div>
         </div>
       ))}
+      <div className='Authors'>
+        <p>Explore</p>
+      </div>
     </div>
   );
 }
