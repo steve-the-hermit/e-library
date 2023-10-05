@@ -28,9 +28,13 @@ function Book() {
           </div>
         </div>
         <div id="stats">
-          <span>Best Selling</span>
+          <p>Best Selling</p>
         </div>
       </div>
+      <div className='books'>
+        <p>Our Collection</p>
+          {/* map the books */}
+        </div>
     </div>
   );
 }

@@ -28,9 +28,13 @@ function Genre() {
           </div>
         </div>
         <div id="stats">
-          <span>Popular Genres</span>
+          <p>Popular Genres</p>
         </div>
       </div>
+      <div className='genres'>
+        <p>See More</p>
+          {/* map the genres */}
+        </div>
     </div>
   );
 }
