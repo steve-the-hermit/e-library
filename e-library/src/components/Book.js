@@ -70,9 +70,17 @@ function Book() {
         </div>
       </div>
       <div className='books'>
-        <p>Our Collection</p>
-          {/* map the books */}
-        </div>
+  <p>Our Collection</p>
+  {books.map((book, index) => (
+    <div className="book-info" key={index}>
+      <h3>{book.title}</h3>
+      <p>Book description, author information, or other relevant details go here.</p>
+    </div>
+  ))}
+</div>
+
+
+
     </div>
   );
 }
