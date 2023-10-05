@@ -1,7 +1,7 @@
 import random
 from datetime import datetime
 from faker import Faker
-from app import app, db  # Import your Flask app and db instance from app.py
+from app import app, db  #
 from models import Author, Genre, Book
 
 fake = Faker()
@@ -15,7 +15,7 @@ def generate_random_birth_date():
 
 # Function to create authors, genres, and books
 def create_data():
-    app.app_context().push()  # Push an application context
+    app.app_context().push()  
 
     authors = []
     genres = []
