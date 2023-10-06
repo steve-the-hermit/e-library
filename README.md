@@ -54,3 +54,4 @@ If you have any questions, suggestions, or encounter issues with Ebook Library, 
 
 Happy reading!
 
+(multiple files may conflict,and multiple commits may be overlapped,do proceed with a keen eye)
