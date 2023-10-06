@@ -126,20 +126,21 @@ def create_app(config_name='development'):
         if request.method == 'GET':
             # Read operation - Retrieve all books
             books = Book.query.all()
-            book_list = [{'id': book.book_id, 'name': book.book_name, 'author_id': book.author_id, 'author_name': book.author_name} for book in books]
+            book_list = [{'id': book.book_id, 'book_title': book.book_title, 'author_id': book.author_id, 'author_name': book.author_name} for book in books]
             return jsonify(book_list)
         elif request.method == 'POST':
             # Create operation - Add a new book
             form = BookForm(request.form)
             if form.validate():
                 data = form.data
-                new_book = Book(book_name=data['name'], author_id=data['author_id'], author_name=data['author_name'])
+                new_book = Book(book_title=data['name'], author_id=data['author_id'], author_name=data['author_name'])
                 db.session.add(new_book)
                 db.session.commit()
 
                 return jsonify({'message': 'Book created successfully'}), 201
             else:
                 return jsonify({'error': 'Validation failed', 'errors': form.errors}), 400
+
 
     @app.route('/books/<int:book_id>', methods=['GET', 'PUT', 'DELETE'])
     def book(book_id):
@@ -149,7 +150,7 @@ def create_app(config_name='development'):
 
         if request.method == 'GET':
             # Read operation - Retrieve a specific book
-            return jsonify({'id': book.book_id, 'name': book.book_name, 'author_id': book.author_id, 'author_name': book.author_name})
+            return jsonify({'id': book.book_id, 'name': book.book_title, 'author_id': book.author_id, 'author_name': book.genre_id})
         elif request.method == 'PUT':
             # Update operation - Modify a book
             data = request.json
@@ -166,10 +167,8 @@ def create_app(config_name='development'):
 
             return jsonify({'message': 'Book deleted successfully'})
     return app
-    if __name__ == '__main__':
-        
-        app = create_app()
-    with app.app_context():
-        db.create_all()
-    app.run(port=5555, debug=True)
+if __name__ == '__main__':
+    app = create_app()
+    db.create_all()
+    app.run(port=5500, debug=True)
             
