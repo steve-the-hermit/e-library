@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, validators
-from models import Author
+from .models import Author
 
 class BookForm(FlaskForm):
     name = StringField('Book Name', [validators.Length(min=1, max=250), validators.DataRequired()])

@@ -2075,7 +2075,10 @@ Fl>aB>rx>HgF~y(Alp}%{U<Zgkk9a&$unMB)j6|h0eSX)k35e{wOWA<^ccoU{}~>hL}?Y4u{0!Wn8KJ
 cnH3AvuRA_EM@*1plEjH$e$;^>0$tiZ1u<)wvP7P_d66wl;0qyDfKrTI}H=}PtW@=}=@HI<mdQ-b~TV
 tOqRM8HJ=If&hVBdf<NHCot4d<Ha1GX|@Y*kqsm6bU^4WL*!#~oxkKc}!zM(o3i_WD>V+j1ieo13Vm<
 an=>3;)JrE5mcc|Br_I_v6Pw#Re+m6u-0`@KL6Hyq(|xW!C65Xa&}vMK4i7q1(KF_vjTqJcOqh-63@O
-I{*^=ckC_ZuG^X+mtMBV=)~qCypwCGc9II*aYZ(!r`ql32N|AR4lkMXL92?59DoWnN@OASF2%|p)Wt^
+I{*^=ckC_ZuG^X+msqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: author
+[SQL: INSERT INTO author (author_name, author_birth_date) VALUES (?, ?) RETURNING author_id]
+[parameters: ('Raymond Williams', '1923-11-05')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)tMBV=)~qCypwCGc9II*aYZ(!r`ql32N|AR4lkMXL92?59DoWnN@OASF2%|p)Wt^
 ?-F{<qnp8qRv>A}}R<n&dS#gx_u<x014Wc?3QiyBe;1zD_UOT2W=Y>;7LQ=ZRe6t09ico^61?May%iR
 <}&f_=-rejF0KAgtzZCqHuaoC6kC%`;7Kh;o*K0>D&dk7(=4594y)t%D5EoAk;InW9{cFxfZaE{<*uC
 Hc1=ay%u2*D5E3mb*E&{sJ`2UQZ&96)%AiiTngrK$m>KIW7wL|nrHL=c!btaGkMK1^s+>GXzvrq1j<M
