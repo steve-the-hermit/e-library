@@ -8,7 +8,7 @@ function Home() {
         <img className='img'src='https://shorturl.at/doyTW' alt='altc' />
     </div>
     <div className='Home'>
-        <img className='img2' src='https://shorturl.at/fgjW5' alt='altc'/>
+        <img className='img1' src='https://t.ly/22A6b' alt='altc'/>
         <h2 className='welcome'>Read the biggest ebooks for 100% free.
         <p>Each day you'll receive a selection of titles, from bestsellers to hidden gems.</p>
         </h2>
