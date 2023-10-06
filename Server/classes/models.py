@@ -32,8 +32,10 @@ class Book(db.Model):
     book_id = db.Column(db.Integer, primary_key=True)
     book_title = db.Column(db.String(255), nullable=False)
     book_publication_year = db.Column(db.Integer)
+    book_image_url= db.Column(db.String(500))
     book_author_id = db.Column(db.Integer, db.ForeignKey('author.author_id'), nullable=False)
     book_genre_id = db.Column(db.Integer, db.ForeignKey('genre.genre_id'), nullable=False)
+   
 
     def __str__(self):
         return f"Book: {self.book_title}, Author: {self.author.author_name}, Genre: {self.genre.genre_name}, Year: {self.book_publication_year}"

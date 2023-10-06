@@ -126,7 +126,7 @@ def create_app(config_name='development'):
         if request.method == 'GET':
             # Read operation - Retrieve all books
             books = Book.query.all()
-            book_list = [{'id': book.book_id, 'book_title': book.book_title, 'author_id': book.author_id, 'author_name': book.author_name} for book in books]
+            book_list = [{'id': book.book_id, 'book_title': book.book_title, 'author_id': book.book_author_id, 'author_name': book.author_name} for book in books]
             return jsonify(book_list)
         elif request.method == 'POST':
             # Create operation - Add a new book
