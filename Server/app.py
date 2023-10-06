@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_migrate import Migrate
-from .models import db, Book, Author, Genre
-from .forms import BookForm
-from .config import app_config
+from models import db, Book
+from forms import BookForm
+from config import app_config
 
 def create_app(config_name='development'):
     app = Flask(__name__)

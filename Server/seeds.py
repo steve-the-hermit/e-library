@@ -4,8 +4,10 @@ from app import create_app, db
 import random
 from datetime import datetime
 from config import app_config
+from custom_providers import ImageProvider
 
 fake = Faker()
+fake.add_provider(ImageProvider)
 app = create_app()  # Call create_app to initialize the Flask app
 
 # Function to generate random birth dates for authors
@@ -16,7 +18,7 @@ def generate_random_birth_date():
     return datetime(year, month, day)
 
 def create_data():
-    with app.app_context():  
+    with app.app_context():  # Enter the Flask app context
         print("Seeding data...")
         authors = Author.query.all()
         genres = Genre.query.all()
@@ -34,7 +36,8 @@ def create_data():
                 book_title=fake.sentence(nb_words=3),
                 book_publication_year=random.randint(1950, 2023),
                 book_author_id=random_author.author_id,
-                book_genre_id=random_genre.genre_id
+                book_genre_id=random_genre.genre_id,
+                book_image_url=fake.random_image_url()
             )
             books.append(book)
 
@@ -42,11 +45,10 @@ def create_data():
         db.session.add_all(books)
         db.session.commit()
 
-
         print("Data seeding complete.")
 
 if __name__ == "__main__":
     with app.app_context():
-        # db.create_all()
+        db.create_all()
         create_data()
         print("Data seeded successfully.")
