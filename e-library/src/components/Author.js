@@ -81,7 +81,12 @@ function Author() {
         )}
       </div>
         <p>Explore</p>
-        {/* map author */}
+        {authors.map((author, index) => (
+    <div className="author-info" key={index}>
+      <h3>{author.name}</h3>
+      <p>Author description or other relevant information goes here.</p>
+    </div>
+  ))}
       </div>
     </div>
   );
