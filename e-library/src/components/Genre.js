@@ -76,36 +76,6 @@ function Genre() {
   ))}
 </div>
 
-      <div className='genres'>
-  <p>See More</p>
-  {genres.map((genre, index) => (
-    <div className="genre-info" key={index}>
-      <h3>{genre}</h3>
-      <p>Additional information about the genre or links to explore it further.</p>
-    </div>
-  ))}
-</div>
-
-      <div className='genres'>
-  <p>See More</p>
-  {genres.map((genre, index) => (
-    <div className="genre-info" key={index}>
-      <h3>{genre}</h3>
-      <p>Additional information about the genre or links to explore it further.</p>
-    </div>
-  ))}
-</div>
-
-      <div className='genres'>
-  <p>See More</p>
-  {genres.map((genre, index) => (
-    <div className="genre-info" key={index}>
-      <h3>{genre}</h3>
-      <p>Additional information about the genre or links to explore it further.</p>
-    </div>
-  ))}
-</div>
-
     </div>
   );
 }
