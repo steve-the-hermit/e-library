@@ -1,92 +1,76 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import './Author.css';
+
+function formatDateWithoutGMT(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.toLocaleString('default', { month: 'short' });
+  const day = date.getDate();
+  const formattedDate = `${year} ${month} ${day}`;
+  return formattedDate;
+}
 
 function Author() {
-  const [followCounts, setFollowCounts] = useState(Array(6).fill(0));
-
-  useEffect(() => {
-    setFollowCounts([13962848, 2305940, 11594036, 4676549, 5290112, 6004934]); 
-
-    const intervalId = setInterval(() => {
-      setFollowCounts((prevCounts) =>
-        prevCounts.map((count) => count + 3)
-      );
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const cardImages = [
-    'https://t.ly/AGkST',
-    'https://shorturl.at/no168',
-    'https://shorturl.at/cfQ69',
-    'https://shorturl.at/glmMY',
-    'https://shorturl.at/AIR58',
-    'https://cfda.imgix.net/2022/12/Adonis-unnamed-8.jpg',
-  ];
+  const [authors, setAuthors] = useState([]);
+  const [filteredAuthors, setFilteredAuthors] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Function to fetch authors from the backend
+  const fetchAuthors = async () => {
+    try {
+      const response = await Axios.get('http://127.0.0.1:5000/authors'); 
+      setAuthors(response.data); 
+      setFilteredAuthors(response.data);
+    } catch (error) {
+      console.error('Error fetching authors:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAuthors();
+  }, []);
+
   const handleInputChange = (e) => {
-    setSearchQuery(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    const filtered = authors.filter((author) =>
+      author.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredAuthors(filtered);
   };
 
   const handleResetClick = () => {
     setSearchQuery('');
+    setFilteredAuthors(authors);
   };
 
   return (
-    
-    <div>
-      <p>Popular Authors</p>
-      {cardImages.map((imageUrl, index) => (
-  <div className="card" key={index}>
-    <Link className='my-link' to={`/author/${index}`}>
-      <div className="img">
-        <div className="imgtag-container">
-          <img className="imgtag" src={imageUrl} alt="" />
-          <div className="view-text">ViewProfile</div>
-        </div>
-        <div>
-          <span className='followers'>Readers: {followCounts[index]}</span>
-        </div>
-      </div>
-    </Link>
-  </div>
-))}
-      <div className='Authors'>
+    <div className="App">
       <div className="form">
         <input
           type="text"
           className="input"
-          placeholder="Search Author"
+          placeholder="Search Authors"
           value={searchQuery}
           onChange={handleInputChange}
         />
         {searchQuery && (
           <button className="reset" onClick={handleResetClick}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            Reset
           </button>
         )}
       </div>
-        <p>Explore</p>
-        {authors.map((author, index) => (
-    <div className="author-info" key={index}>
-      <h3>{author.name}</h3>
-      <p>Author description or other relevant information goes here.</p>
-    </div>
-  ))}
+      <h2>Authors List</h2>
+      <div className="authors">
+        {filteredAuthors.map((author) => (
+          <div className="author-info" key={author.id}>
+            <h3>{author.name}</h3>
+            <p>{formatDateWithoutGMT(author.birthdate)}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
