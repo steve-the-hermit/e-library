@@ -397,3 +397,8 @@ input:not(:placeholder-shown) ~ .reset {
   font-family: Gill Sans, sans-serif;
 }
 
+/* Author Styling */
+h2{
+  display: block;
+  text-align: center;
+}
